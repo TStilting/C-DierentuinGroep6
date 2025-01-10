@@ -2,13 +2,51 @@
 {
     public class Enclosure
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
+        private int id;
+        private string name;
         private List<Animal> Animals { get; set; } = new();
-        private Climate Climate { get; set; }
-        private HabitatType HabitatType { get; set; }
-        private SecurityLevel SecurityLevel { get; set; }
-        private double Size { get; set; } // in square meters
+        private Climate climate;
+        private HabitatType habitatType;
+        private SecurityLevel securityLevel;
+        private double size; // in square meters
+
+        // Publieke properties voor EF Core
+        public int Id
+        {
+            get => id;
+            private set => id = value;
+        }
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public double Size
+        {
+            get => size;
+            set => size = value;
+        }
+
+        public Climate Climate
+        {
+            get => climate;
+            set => climate = value;
+        }
+
+        public HabitatType HabitatType
+        {
+            get => habitatType;
+            set => habitatType = value;
+        }
+
+        public SecurityLevel SecurityLevel
+        {
+            get => securityLevel;
+            set => securityLevel = value;
+        }
+
 
         public Enclosure(int id, string name, Climate climate, HabitatType habitatType, SecurityLevel securityLevel, double size)
         {
@@ -19,6 +57,9 @@
             SecurityLevel = securityLevel;
             Size = size;
         }
+
+        // Lege constructor voor EF Core
+        private Enclosure() { }
     }
 
     public enum Climate

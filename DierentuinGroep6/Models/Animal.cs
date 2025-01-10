@@ -4,25 +4,78 @@ namespace DierentuinGroep6.Models
 {
     public class Animal
     {
-        private int Id { get; set; }
-        private String Name { get; set; }
-        private String Species { get; set; }
-        private Category Category { get; set; }
-        private Size Size { get; set; }
-        private DietaryClass DietaryClass { get; set; }
-        private ActivityPattern ActivityPattern { get; set; }
-        private List<String> Prey { get; set; }
-        private String Enclosure { get; set; }
-        private double SpaceRequirement { get; set; }
-        private SecurityLevel SecurityRequirement { get; set; }
+        private int id;
+        private string name;
+        private string species;
+        private string prey;
+        private double spaceRequirement;
+        private Size size;
+        private DietaryClass dietaryClass;
+        private ActivityPattern activityPattern;
+        private SecurityLevel securityRequirement;
 
         // Houdt bij welke acties zijn uitgevoerd
         private List<string> performedActions = new();
 
-
-        public Animal() { 
-        
+        // Publieke properties voor EF Core
+        public int Id
+        {
+            get => id;
+            private set => id = value; // Alleen EF Core mag deze instellen
         }
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public string Species
+        {
+            get => species;
+            set => species = value;
+        }
+
+        public string Prey
+        {
+            get => prey;
+            set => prey = value;
+        }
+
+        public double SpaceRequirement
+        {
+            get => spaceRequirement;
+            set => spaceRequirement = value;
+        }
+
+        public Size Size
+        {
+            get => size;
+            set => size = value;
+        }
+
+        public DietaryClass DietaryClass
+        {
+            get => dietaryClass;
+            set => dietaryClass = value;
+        }
+
+        public ActivityPattern ActivityPattern
+        {
+            get => activityPattern;
+            set => activityPattern = value;
+        }
+
+        public SecurityLevel SecurityRequirement
+        {
+            get => securityRequirement;
+            set => securityRequirement = value;
+        }
+
+        // Lege constructor voor EF Core
+        public Animal() { }
+
+
 
         public bool IsAwake(DateTime currentTime)
         {
