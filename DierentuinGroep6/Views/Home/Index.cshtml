@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Zoo";
+}
+
+<h1>Welcome to Zoo App</h1>
+
+<p>Select Option:</p>
+
+<div class="navigation">
+    <a class="btn btn-primary" href="/Animals">Dieren Beheren</a>
+    <a class="btn btn-primary" href="/Enclosures">Verblijven Beheren</a>
+    <a class="btn btn-primary" href="/Actions">Acties Uitvoeren</a>
+</div>
+
+<style>
+    .navigation {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 10px 15px;
+        color: white;
+        background-color: #007bff;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>

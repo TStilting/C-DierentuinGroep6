@@ -5,9 +5,9 @@ namespace DierentuinGroep6.Data
 {
     public class ZooContext : DbContext
     {
-        public ZooContext(DbContextOptions<ZooContext> options)
-            : base(options)
+        public ZooContext(DbContextOptions<ZooContext> options) : base(options)
         {
+
         }
 
         public DbSet<Animal> Animals { get; set; }

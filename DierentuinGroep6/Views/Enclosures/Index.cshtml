@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DierentuinGroep6.Models.Enclosure>
+
+<h1>Enclosures</h1>
+
+<a href="@Url.Action("Create", "Enclosures")" class="btn btn-success">Add New Enclosure</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Climate</th>
+            <th>Habitat Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var enclosure in Model)
+        {
+            <tr>
+                <td>@enclosure.Id</td>
+                <td>@enclosure.Name</td>
+                <td>@enclosure.Climate</td>
+                <td>@enclosure.HabitatType</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Enclosures", new { id = enclosure.Id })" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Delete", "Enclosures", new { id = enclosure.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

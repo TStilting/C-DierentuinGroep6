@@ -1,22 +1,16 @@
-﻿using DierentuinGroep6.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using DierentuinGroep6.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DierentuinGroep6.Controllers
 {
-    public class AnimalController : Controller
+    public class AnimalsController : Controller
     {
-        private readonly ZooContext _context;
-
-        public AnimalController(ZooContext context)
-        {
-            _context = context;
-        }
-
+        // GET: /Animals
+        [HttpGet]
         public IActionResult Index()
         {
-            var animals = _context.Animals.ToList();
-            return View(animals);
+            // Haal hier je dieren op uit de database
+            return View(); // Dit zou een View moeten zijn zoals Animals/Index.cshtml
         }
 
         public IActionResult Create()
@@ -29,12 +23,10 @@ namespace DierentuinGroep6.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Animals.Add(animal);
-                _context.SaveChanges();
+                // Voeg het dier toe aan de database
                 return RedirectToAction("Index");
             }
             return View(animal);
         }
-
     }
 }

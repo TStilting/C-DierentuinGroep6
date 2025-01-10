@@ -4,37 +4,39 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DierentuinGroep6.Controllers
 {
-    public class EnclosureController : Controller
+    public class EnclosuresController : Controller
     {
         private readonly ZooContext _context;
 
-        public EnclosureController(ZooContext context)
+        public EnclosuresController(ZooContext context)
         {
             _context = context;
         }
 
+        // Index Actie
         public IActionResult Index()
         {
-            var enclosures = _context.Enclosures.ToList();
-            return View(enclosures);
+            var enclosures = _context.Enclosures.ToList();  // Haal de enclosures op uit de database
+            return View(enclosures);  // Return de view met de lijst van enclosures
         }
 
+        // Create Actie
         public IActionResult Create()
         {
-            return View();
+            return View();  // Return de view voor het maken van een nieuwe enclosure
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Enclosure enclosure)
         {
             if (ModelState.IsValid)
             {
-                _context.Enclosures.Add(enclosure);
+                _context.Add(enclosure);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(enclosure);
         }
-
     }
 }

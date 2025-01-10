@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DierentuinGroep6.Models.Animal>
+
+<h1>Animals</h1>
+
+<a class="btn btn-success" href="/Animals/Create">Add New Animal</a>
+
+@if (Model == null || !Model.Any())  // Alleen als de lijst leeg is
+{
+    <p>No animals found.</p> // Toon dit als er geen dieren te tonen zijn
+}
+else // Als er iets te tonen is, toon het tabel
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Soort</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in Model)
+            {
+                <tr>
+                    <td>@animal.Id</td>
+                    <td>@animal.Name</td>
+                    <td>@animal.Species</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
